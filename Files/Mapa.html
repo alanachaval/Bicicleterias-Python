@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>REPLACE</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+var map;
+var infoWindow;
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: REPLACE,
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+    });
+
+    var marker = new google.maps.Marker({
+        position: REPLACE,
+        map: map,
+        title: 'REPLACE'
+    });
+
+    var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">REPLACE</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>REPLACE</b></p>'+
+      '<p>REPLACE</p>'+
+      '</div>'+
+      '</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
+
+    var comunaCoords = [
+      REPLACE
+    ];
+
+
+    var comuna = new google.maps.Polygon({
+        paths: comunaCoords,
+        strokeColor: '#FFDE00',
+        strokeOpacity: 0.9,
+        strokeWeight: 3,
+        fillColor: '#FFDE00',
+        fillOpacity: 0.45
+    });
+    comuna.setMap(map);
+
+    comuna.addListener('click', showArrays);
+
+    infoWindow = new google.maps.InfoWindow;
+}
+
+function showArrays(event) {
+
+    var vertices = this.getPath();
+
+    var contentString = '<b>REPLACE</b>'+
+    '<p>REPLACE</p>';
+
+    infoWindow.setContent(contentString);
+    infoWindow.setPosition(event.latLng);
+
+    infoWindow.open(map);
+}
+
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAANyC0svGIG-hctWpelkMofYoQ2Rl--RQ&signed_in=true&callback=initMap"></script>
+</body>
+</html>
